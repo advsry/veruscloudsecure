@@ -282,6 +282,42 @@ function verus_nav_item( $item, $index ) {
 }
 
 /**
+ * Social profiles already used in the footer, as stroke icons under the CTA.
+ *
+ * @return void
+ */
+function verus_mega_social() {
+	$links = array(
+		'facebook' => array(
+			'url'   => verus_opt( 'facebook', 'https://www.facebook.com/veruscloudsecure/' ),
+			'label' => __( 'Facebook', 'verus' ),
+		),
+		'linkedin' => array(
+			'url'   => verus_opt( 'linkedin', 'https://www.linkedin.com/company/go-verus/' ),
+			'label' => __( 'LinkedIn', 'verus' ),
+		),
+	);
+
+	$links = array_filter(
+		$links,
+		static function ( $item ) {
+			return is_string( $item['url'] ) && '' !== $item['url'];
+		}
+	);
+	if ( ! $links ) {
+		return;
+	}
+
+	echo '<div class="v-mega__social">';
+	foreach ( $links as $key => $item ) {
+		echo '<a href="' . esc_url( $item['url'] ) . '" rel="noopener" target="_blank" aria-label="' . esc_attr( $item['label'] ) . '">';
+		echo verus_icon( $key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '</a>';
+	}
+	echo '</div>';
+}
+
+/**
  * Full-width mega panel (Cloudflare pattern: rail + cards + CTA).
  *
  * @param array $item  Top-level item.
@@ -349,6 +385,7 @@ function verus_mega_panel( $item, $index ) {
 		echo '</div></div>';
 	}
 
+	echo '<div class="v-mega__side">';
 	echo '<aside class="v-mega__cta">';
 	echo '<p class="v-eyebrow">' . esc_html__( 'Talk to Verus', 'verus' ) . '</p>';
 	echo '<h3>' . esc_html__( 'Not sure where to start?', 'verus' ) . '</h3>';
@@ -357,6 +394,8 @@ function verus_mega_panel( $item, $index ) {
 	$phone = verus_opt( 'phone', '1-800-958-3787' );
 	echo '<a class="v-mega__phone" href="tel:' . esc_attr( verus_tel( $phone ) ) . '">' . esc_html( $phone ) . '</a>';
 	echo '</aside>';
+	verus_mega_social();
+	echo '</div>';
 
 	echo '</div></div>';
 }

@@ -23,7 +23,7 @@ defined( 'ABSPATH' ) || exit;
 			</p>
 			<?php
 			$fb = verus_opt( 'facebook', 'https://www.facebook.com/veruscloudsecure/' );
-			$li = verus_opt( 'linkedin', '' );
+			$li = verus_opt( 'linkedin', 'https://www.linkedin.com/company/go-verus/' );
 			if ( $fb || $li ) :
 				?>
 				<p class="v-footer__social">

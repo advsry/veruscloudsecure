@@ -28,7 +28,7 @@ function verus_customize_register( $wp_customize ) {
 		'offices'         => array( 'label' => __( 'Office locations', 'verus' ), 'default' => 'Philadelphia · Chicago', 'type' => 'text' ),
 		'assessment_url'  => array( 'label' => __( 'AI Maturity Assessment URL', 'verus' ), 'default' => '/ai-maturity-assessment/', 'type' => 'text' ),
 		'facebook'        => array( 'label' => __( 'Facebook URL', 'verus' ), 'default' => 'https://www.facebook.com/veruscloudsecure/', 'type' => 'url' ),
-		'linkedin'        => array( 'label' => __( 'LinkedIn URL', 'verus' ), 'default' => '', 'type' => 'url' ),
+		'linkedin'        => array( 'label' => __( 'LinkedIn URL', 'verus' ), 'default' => 'https://www.linkedin.com/company/go-verus/', 'type' => 'url' ),
 		'footer_blurb'    => array( 'label' => __( 'Footer blurb', 'verus' ), 'default' => 'Since 2002, Verus has been the senior-led partner for cybersecurity, managed IT, and AI — keeping mid-sized organizations secure and running.', 'type' => 'textarea' ),
 		'ticket_portal'   => array( 'label' => __( 'IT Ticket Portal URL', 'verus' ), 'default' => '', 'type' => 'url' ),
 	);
