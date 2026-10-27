@@ -14,9 +14,15 @@ defined( 'ABSPATH' ) || exit;
  * @return array<string,string>
  */
 function verus_meta_descriptions() {
-	return array(
+	$descriptions = array(
 		'ai-services' => 'Verus helps non-technical business owners put AI to work — automation, AI agents, virtual receptionists, and secure private AI — backed by 24 years of managed IT and cybersecurity.',
 	);
+	if ( function_exists( 'verus_calendly_test_catalog' ) ) {
+		foreach ( verus_calendly_test_catalog() as $slug => $page ) {
+			$descriptions[ $slug ] = $page['description'];
+		}
+	}
+	return $descriptions;
 }
 
 /**
