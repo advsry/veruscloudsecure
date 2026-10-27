@@ -38,6 +38,8 @@ function verus_icon( $key ) {
 		'check'    => '<path d="M6 16l7 7 13-14"/>',
 		'mail'     => '<rect x="3" y="7" width="26" height="18" rx="2"/><path d="M3 9l13 9 13-9"/>',
 		'arrow'    => '<path d="M6 16h20M18 8l8 8-8 8"/>',
+		'facebook' => '<path d="M18 27.5V16.2h3.4l.5-3.8H18v-2.2c0-1.15.35-1.9 1.9-1.9H23V4.8c-.7-.15-1.8-.35-3.1-.35-3.15 0-5.2 1.85-5.2 5.35V12.4H11v3.8h3.7v11.3"/>',
+		'linkedin' => '<circle cx="8" cy="8" r="1.55" fill="currentColor" stroke="none"/><path d="M8 13.2V26"/><path d="M14.6 26V18.4c0-2.2 1.3-3.6 3.3-3.6 2.1 0 3.3 1.5 3.3 3.6V26"/>',
 	);
 
 	$path = isset( $icons[ $key ] ) ? $icons[ $key ] : $icons['star'];

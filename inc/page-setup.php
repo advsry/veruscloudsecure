@@ -14,6 +14,10 @@ defined( 'ABSPATH' ) || exit;
  * After switch: assign templates, seed menus if empty.
  */
 function verus_after_switch() {
+	verus_ensure_calendly_test_pages();
+	if ( verus_calendly_test_pages_ready() ) {
+		update_option( 'verus_calendly_test_pages', VERUS_VERSION );
+	}
 	verus_assign_templates();
 	verus_seed_menus();
 	flush_rewrite_rules();
@@ -24,6 +28,7 @@ add_action( 'after_switch_theme', 'verus_after_switch' );
  * Re-assign templates when the theme version changes (uploads do not fire after_switch_theme).
  */
 function verus_maybe_assign_templates() {
+	verus_maybe_ensure_calendly_test_pages();
 	$done = get_option( 'verus_templates_version' );
 	if ( $done === VERUS_VERSION ) {
 		return;
@@ -66,6 +71,9 @@ function verus_template_map() {
 		'instant-business-intelligence'      => 'page-templates/service.php',
 		'private-ai-governance'              => 'page-templates/service.php',
 		'smart-task-automation'              => 'page-templates/service.php',
+		// Test Calendly landings. Live slugs above stay on the service template.
+		'private-ai-governance-test'         => 'page-templates/private-ai-governance-calendly.php',
+		'smart-task-automation-test'         => 'page-templates/ai-automation-calendly.php',
 		'virtual-ai-employees'               => 'page-templates/service.php',
 		'ai-maturity-assessment'             => 'page-templates/service.php',
 		'healthcare-it-services'             => 'page-templates/industry.php',
