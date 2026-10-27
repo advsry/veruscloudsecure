@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'VERUS_VERSION', '1.1.2' );
+define( 'VERUS_VERSION', '1.1.5' );
 define( 'VERUS_DIR', get_template_directory() );
 define( 'VERUS_URI', get_template_directory_uri() );
 

@@ -20,21 +20,39 @@ function verus_opt( $key, $default = '' ) {
 }
 
 /**
- * Canonical Calendly URL.
+ * On-site Book a Meeting path. Buttons go here; Calendly is embedded on that page.
  */
-define( 'VERUS_MEETING_URL', 'https://calendly.com/tamra-veruscloudsecure/new-meeting' );
+define( 'VERUS_MEETING_PATH', '/book-a-meeting/' );
 
 /**
- * Calendly / book-a-meeting URL.
+ * Calendly account URL used only inside the embed widget.
+ */
+define( 'VERUS_CALENDLY_URL', 'https://calendly.com/tamra-veruscloudsecure' );
+
+/**
+ * Book a Meeting page URL (internal). Remaps leftover Calendly button URLs.
  *
  * @return string
  */
 function verus_meeting_url() {
-	$url = verus_opt( 'meeting_url', VERUS_MEETING_URL );
-	if ( is_string( $url ) && false !== strpos( $url, 'calendly.com/' ) && false === strpos( $url, 'tamra-veruscloudsecure/new-meeting' ) ) {
-		return VERUS_MEETING_URL;
+	$url = verus_opt( 'meeting_url', VERUS_MEETING_PATH );
+	if ( is_string( $url ) && false !== strpos( $url, 'calendly.com/' ) ) {
+		return home_url( VERUS_MEETING_PATH );
 	}
-	return $url;
+	if ( is_string( $url ) && $url && '/' === substr( $url, 0, 1 ) ) {
+		return home_url( $url );
+	}
+	return $url ? $url : home_url( VERUS_MEETING_PATH );
+}
+
+/**
+ * Calendly URL loaded by the inline widget on /book-a-meeting/.
+ *
+ * @return string
+ */
+function verus_calendly_embed_url() {
+	$url = verus_opt( 'calendly_url', VERUS_CALENDLY_URL );
+	return $url ? $url : VERUS_CALENDLY_URL;
 }
 
 /**

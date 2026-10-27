@@ -77,6 +77,16 @@ function verus_enqueue_assets() {
 	wp_localize_script( 'verus-main', 'verusTheme', array(
 		'meetingUrl' => verus_meeting_url(),
 	) );
+
+	if ( is_page( 'book-a-meeting' ) ) {
+		wp_enqueue_script(
+			'calendly-widget',
+			'https://assets.calendly.com/assets/external/widget.js',
+			array(),
+			null,
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'verus_enqueue_assets' );
 
@@ -180,6 +190,7 @@ function verus_disable_block_editor_for_acf_pages( $use, $post ) {
 		'page-templates/industry.php',
 		'page-templates/about.php',
 		'page-templates/contact.php',
+		'page-templates/book-meeting.php',
 	);
 	if ( in_array( $template, $ours, true ) ) {
 		return false;
@@ -210,6 +221,7 @@ function verus_is_acf_layout_page( $post_id ) {
 		'page-templates/industry.php',
 		'page-templates/about.php',
 		'page-templates/contact.php',
+		'page-templates/book-meeting.php',
 	);
 	return in_array( $template, $ours, true );
 }

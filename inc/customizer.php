@@ -21,7 +21,8 @@ function verus_customize_register( $wp_customize ) {
 	) );
 
 	$fields = array(
-		'meeting_url'     => array( 'label' => __( 'Book a Meeting URL', 'verus' ), 'default' => 'https://calendly.com/tamra-veruscloudsecure/new-meeting', 'type' => 'url' ),
+		'meeting_url'     => array( 'label' => __( 'Book a Meeting page URL', 'verus' ), 'default' => '/book-a-meeting/', 'type' => 'text' ),
+		'calendly_url'    => array( 'label' => __( 'Calendly embed URL', 'verus' ), 'default' => 'https://calendly.com/tamra-veruscloudsecure', 'type' => 'url' ),
 		'meeting_label'   => array( 'label' => __( 'Book a Meeting button label', 'verus' ), 'default' => 'Book A Meeting', 'type' => 'text' ),
 		'phone'           => array( 'label' => __( 'Phone', 'verus' ), 'default' => '1-800-958-3787', 'type' => 'text' ),
 		'email'           => array( 'label' => __( 'Email', 'verus' ), 'default' => 'info@veruscloudsecure.com', 'type' => 'email' ),

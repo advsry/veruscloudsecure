@@ -42,6 +42,7 @@ function verus_template_map() {
 	return array(
 		'who-is-verus'                       => 'page-templates/about.php',
 		'contact'                            => 'page-templates/contact.php',
+		'book-a-meeting'                     => 'page-templates/book-meeting.php',
 		'services'                           => 'page-templates/hub.php',
 		'ai-services'                        => 'page-templates/hub.php',
 		'cybersecurity'                      => 'page-templates/hub.php',
@@ -79,9 +80,94 @@ function verus_template_map() {
 }
 
 /**
+ * Publish /book-a-meeting/ if it does not exist yet.
+ */
+function verus_ensure_book_meeting_page() {
+	$existing = get_page_by_path( 'book-a-meeting' );
+	if ( $existing ) {
+		return;
+	}
+	$id = wp_insert_post( array(
+		'post_title'  => __( 'Book a Meeting', 'verus' ),
+		'post_name'   => 'book-a-meeting',
+		'post_status' => 'publish',
+		'post_type'   => 'page',
+		'post_content'=> '',
+	), true );
+	if ( is_wp_error( $id ) || ! $id ) {
+		return;
+	}
+	update_post_meta( (int) $id, '_wp_page_template', 'page-templates/book-meeting.php' );
+}
+
+/**
+ * EULA body HTML used when creating /eula/ and as a fallback if the page is empty.
+ *
+ * @return string
+ */
+function verus_eula_html() {
+	$privacy = esc_url( home_url( '/privacy-policy/' ) );
+	$email   = esc_html( verus_opt( 'email', 'info@veruscloudsecure.com' ) );
+	$mailto  = esc_url( 'mailto:' . verus_opt( 'email', 'info@veruscloudsecure.com' ) );
+
+	return '<p><strong>Effective:</strong> October 8, 2026</p>
+<p>This End-User License Agreement ("Agreement") governs use of software applications developed and operated by Verus Cloud Secure ("Verus," "we," "us"), including applications that connect to third-party services such as Intuit QuickBooks Online and ConnectWise (the "Applications").</p>
+<h2>1. Internal Use Only</h2>
+<p>The Applications are private, internal tools used solely by Verus and its authorized personnel. They are not offered, sold, or distributed to the public.</p>
+<h2>2. License</h2>
+<p>Verus grants authorized users a limited, non-exclusive, non-transferable, revocable license to use the Applications for Verus business purposes only. Users may not copy, modify, reverse engineer, sublicense, or distribute the Applications.</p>
+<h2>3. Third-Party Data Access</h2>
+<p>When connected to a third-party service, the Applications access only the data the account administrator authorizes through that service\'s standard authorization process (e.g., OAuth 2.0). Data is used only to provide the Applications\' functions, such as reporting and answering questions about Verus business records. We do not sell, rent, or share this data with outside parties.</p>
+<h2>4. Data Security</h2>
+<p>Credentials and data are stored on Verus-controlled infrastructure using industry-standard security measures, including encryption in transit and restricted access.</p>
+<h2>5. Disconnection</h2>
+<p>An administrator may disconnect any Application from a third-party service at any time, either within the Application or from the third-party service\'s connected-apps settings. Upon disconnection, the Application\'s access stops and stored access tokens are deleted.</p>
+<h2>6. Privacy</h2>
+<p>Use of the Applications is also governed by our <a href="' . $privacy . '">Privacy Policy</a>.</p>
+<h2>7. No Warranty</h2>
+<p>The Applications are provided "as is" without warranties of any kind, express or implied, including warranties of merchantability or fitness for a particular purpose.</p>
+<h2>8. Limitation of Liability</h2>
+<p>To the fullest extent permitted by law, Verus is not liable for any indirect, incidental, special, or consequential damages arising from use of the Applications.</p>
+<h2>9. Termination</h2>
+<p>Verus may suspend or end any user\'s access at any time. Sections 3 through 8 survive termination.</p>
+<h2>10. Governing Law</h2>
+<p>This Agreement is governed by the laws of the Commonwealth of Pennsylvania. Disputes shall be brought in the state or federal courts of Delaware County or Montgomery County, Pennsylvania.</p>
+<h2>11. Changes</h2>
+<p>We may update this Agreement at any time by posting a revised version on this page.</p>
+<h2>12. Contact</h2>
+<p>Questions: <a href="' . $mailto . '">' . $email . '</a></p>';
+}
+
+/**
+ * Publish /eula/ if it does not exist yet.
+ */
+function verus_ensure_eula_page() {
+	$html     = verus_eula_html();
+	$existing = get_page_by_path( 'eula' );
+	if ( $existing ) {
+		if ( $existing->post_content !== $html ) {
+			wp_update_post( array(
+				'ID'           => $existing->ID,
+				'post_content' => $html,
+			) );
+		}
+		return;
+	}
+	wp_insert_post( array(
+		'post_title'   => __( 'End-User License Agreement (EULA)', 'verus' ),
+		'post_name'    => 'eula',
+		'post_status'  => 'publish',
+		'post_type'    => 'page',
+		'post_content' => $html,
+	), true );
+}
+
+/**
  * Map known slugs to page templates.
  */
 function verus_assign_templates() {
+	verus_ensure_book_meeting_page();
+	verus_ensure_eula_page();
 	foreach ( verus_template_map() as $slug => $template ) {
 		$pages = get_posts( array(
 			'name'        => $slug,

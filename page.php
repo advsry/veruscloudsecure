@@ -22,12 +22,15 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 			the_content();
+			if ( 'eula' === get_post_field( 'post_name' ) && '' === trim( wp_strip_all_tags( get_the_content() ) ) ) {
+				echo verus_eula_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			}
 		endwhile;
 		?>
 	</div>
 </article>
 <?php
-$skip = in_array( get_post_field( 'post_name' ), array( 'privacy-policy', 'sms-terms' ), true );
+$skip = in_array( get_post_field( 'post_name' ), array( 'privacy-policy', 'sms-terms', 'eula' ), true );
 if ( ! $skip ) {
 	verus_render_cta();
 }

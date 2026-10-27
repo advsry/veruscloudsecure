@@ -75,6 +75,7 @@ defined( 'ABSPATH' ) || exit;
 				} else {
 					echo '<ul class="v-footer__legal-list">';
 					echo '<li><a href="' . esc_url( home_url( '/privacy-policy/' ) ) . '">' . esc_html__( 'Privacy Policy', 'verus' ) . '</a></li>';
+					echo '<li><a href="' . esc_url( home_url( '/eula/' ) ) . '">' . esc_html__( 'EULA', 'verus' ) . '</a></li>';
 					echo '<li><a href="' . esc_url( home_url( '/sms-terms/' ) ) . '">' . esc_html__( 'SMS Terms', 'verus' ) . '</a></li>';
 					echo '</ul>';
 				}

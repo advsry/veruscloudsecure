@@ -630,6 +630,9 @@ a{color:var(--v-navy-600)}
   padding:.9rem 1.4rem;border-radius:10px;
 }
 
+.v-calendly{background:#fff;padding-block:clamp(1.5rem,4vw,2.75rem)}
+.v-calendly .calendly-inline-widget{min-width:320px;height:700px}
+
 .v-prose{font-size:var(--v-s-1);line-height:1.75}
 .v-prose h2,.v-prose h3{margin:1.6rem 0 .6rem}
 .v-prose p{margin:0 0 1rem}

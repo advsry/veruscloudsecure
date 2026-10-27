@@ -156,7 +156,7 @@ function verus_default_content() {
 			'primary_label' => 'Get your score in minutes',
 			'primary_url' => '/ai-maturity-assessment/',
 			'secondary_label' => 'Book a Meeting',
-			'secondary_url' => 'https://calendly.com/tamra-veruscloudsecure/new-meeting',
+			'secondary_url' => '/book-a-meeting/',
 			'trust' => array(
 				array(
 					'title' => 'Founded in 2002',
@@ -231,7 +231,7 @@ function verus_default_content() {
 			'cta_label' => 'Get your score in minutes',
 			'cta_url' => '/ai-maturity-assessment/',
 			'cta_secondary_label' => 'Book a Meeting',
-			'cta_secondary_url' => 'https://calendly.com/tamra-veruscloudsecure/new-meeting',
+			'cta_secondary_url' => '/book-a-meeting/',
 			'cta_note' => 'Or book a meeting if you already know what you want to tackle.',
 			'faq_eyebrow' => 'Frequently Asked Questions',
 			'faq_title' => 'Frequently Asked Questions',
@@ -441,6 +441,25 @@ function verus_default_content() {
 			'sub' => 'Founded in 2002',
 			'answer' => 'Founded in 2002, Verus helps organizations leverage AI, automation, cybersecurity, and managed technology solutions to improve productivity, strengthen security, and drive business growth. Serving clients nationwide, we combine AI innovation, cybersecurity expertise, and strategic technology guidance to help businesses operate more efficiently, securely, and competitively.',
 		),
+		'book-a-meeting' => array(
+			'eyebrow' => 'Talk to Verus',
+			'title' => 'Book a Meeting',
+			'sub' => 'Pick a time that works.',
+			'answer' => '30 minutes with a senior consultant. Fixed scope. No obligation.',
+			'primary_label' => '',
+			'secondary_label' => '',
+			'trust' => array(
+				array(
+					'title' => 'Founded in 2002',
+				),
+				array(
+					'title' => 'Senior consultant on the call',
+				),
+				array(
+					'title' => 'No obligation',
+				),
+			),
+		),
 		'contact' => array(
 			'primary_label' => 'Book A Meeting',
 			'secondary_label' => '1-800-958-3787',
@@ -631,7 +650,7 @@ function verus_default_content() {
 			'primary_label' => 'Get your score in minutes',
 			'primary_url' => '/ai-maturity-assessment/',
 			'secondary_label' => 'Book a Meeting',
-			'secondary_url' => 'https://calendly.com/tamra-veruscloudsecure/new-meeting',
+			'secondary_url' => '/book-a-meeting/',
 			'trust' => array(
 				array(
 					'title' => 'Private AI, not public chatbots',
@@ -752,7 +771,7 @@ function verus_default_content() {
 			'cta_label' => 'Get your score in minutes',
 			'cta_url' => '/ai-maturity-assessment/',
 			'cta_secondary_label' => 'Book a Meeting',
-			'cta_secondary_url' => 'https://calendly.com/tamra-veruscloudsecure/new-meeting',
+			'cta_secondary_url' => '/book-a-meeting/',
 			'cta_note' => 'The quiz is free. The meeting is optional.',
 			'faq_eyebrow' => 'Frequently Asked Questions',
 			'faq_title' => 'Frequently Asked Questions',
