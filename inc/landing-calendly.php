@@ -70,22 +70,16 @@ function verus_current_calendly_test() {
 }
 
 /**
- * Inline Calendly widget. Event URL is the theme meeting link, same event as the source HTML.
+ * Inline Calendly widget for both test landings.
+ *
+ * This is the event embed, not the account link and not the on-site booking page.
+ * A min-width under 320px makes Calendly swap in its mobile widget.
  *
  * @return void
  */
 function verus_the_calendly_embed() {
-	$url = add_query_arg(
-		array(
-			'hide_gdpr_banner' => '1',
-			'primary_color'    => '1B75BC',
-		),
-		verus_meeting_url()
-	);
-	printf(
-		'<div class="calendly-inline-widget" data-url="%s" style="min-width:300px;height:660px;"></div>',
-		esc_url( $url )
-	);
+	echo '<div class="calendly-inline-widget" data-url="https://calendly.com/tamra-veruscloudsecure/new-meeting" style="min-width:320px;height:700px;"></div>' . "\n";
+	echo '<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>' . "\n";
 }
 
 /**
@@ -194,13 +188,6 @@ function verus_enqueue_calendly_landing() {
 		VERUS_URI . '/assets/js/landing-calendly.js',
 		array(),
 		VERUS_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'calendly-widget',
-		'https://assets.calendly.com/assets/external/widget.js',
-		array(),
-		null,
 		true
 	);
 }

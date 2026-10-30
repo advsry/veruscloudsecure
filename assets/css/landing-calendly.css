@@ -222,7 +222,7 @@ font-size: 14.5px; color: var(--ink-600); margin-bottom: 8px; padding: 0 8px;
 }
 
 .v-page .v-lp .calendly-inline-widget {
-min-width: 300px; height: 660px;
+min-width: 320px; height: 700px;
 }
 
 .v-page .v-lp .book-micro {
@@ -837,10 +837,6 @@ padding: 22px 20px;
 .v-page .v-lp .stack-card {
 padding: 28px 22px;
 }
-
-.v-page .v-lp .calendly-inline-widget {
-height: 760px;
-}
 }
 
 /* Governance-only cards */
@@ -876,7 +872,6 @@ font-size: 16px; color: var(--ink-600); line-height: 1.6;
 
 @media (max-width: 720px) {
   .v-lp-page .v-footer { padding-bottom: 96px; }
-  .v-page .v-lp .calendly-inline-widget { height: 760px !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {
