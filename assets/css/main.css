@@ -540,7 +540,8 @@ a{color:var(--v-navy-600)}
   border:1px solid var(--v-line);color:var(--v-navy);background:#fff;text-decoration:none;
 }
 .v-mega__social a:hover{border-color:var(--v-navy-600);color:var(--v-navy-600);background:var(--v-bg-soft)}
-.v-mega__social svg{width:18px;height:18px}
+.v-page .v-mega__social svg{width:22px;height:22px;fill:none;stroke:none}
+.v-page .v-mega__social svg path{stroke:none}
 
 .v-mega-backdrop{
   position:fixed;inset:var(--v-header-h) 0 0 0;background:rgba(10,22,38,.28);z-index:1;
