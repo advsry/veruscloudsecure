@@ -25,9 +25,9 @@ function verus_opt( $key, $default = '' ) {
 define( 'VERUS_MEETING_PATH', '/book-a-meeting/' );
 
 /**
- * Calendly account URL used only inside the embed widget.
+ * Calendly event URL used by the inline embed widget.
  */
-define( 'VERUS_CALENDLY_URL', 'https://calendly.com/tamra-veruscloudsecure' );
+define( 'VERUS_CALENDLY_URL', 'https://calendly.com/tamra-veruscloudsecure/new-meeting' );
 
 /**
  * Book a Meeting page URL (internal). Remaps leftover Calendly button URLs.
@@ -46,13 +46,16 @@ function verus_meeting_url() {
 }
 
 /**
- * Calendly URL loaded by the inline widget on /book-a-meeting/.
+ * Calendly event URL for the inline widget. Account-only links use the event embed.
  *
  * @return string
  */
 function verus_calendly_embed_url() {
 	$url = verus_opt( 'calendly_url', VERUS_CALENDLY_URL );
-	return $url ? $url : VERUS_CALENDLY_URL;
+	if ( ! is_string( $url ) || false === strpos( $url, 'tamra-veruscloudsecure/new-meeting' ) ) {
+		return VERUS_CALENDLY_URL;
+	}
+	return $url;
 }
 
 /**

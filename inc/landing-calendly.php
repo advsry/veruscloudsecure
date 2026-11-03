@@ -70,7 +70,7 @@ function verus_current_calendly_test() {
 }
 
 /**
- * Inline Calendly widget for both test landings.
+ * Inline Calendly widget for every theme embed, including the test landings and Book a Meeting.
  *
  * This is the event embed, not the account link and not the on-site booking page.
  * A min-width under 320px makes Calendly swap in its mobile widget.

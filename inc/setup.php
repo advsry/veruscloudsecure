@@ -77,16 +77,6 @@ function verus_enqueue_assets() {
 	wp_localize_script( 'verus-main', 'verusTheme', array(
 		'meetingUrl' => verus_meeting_url(),
 	) );
-
-	if ( is_page( 'book-a-meeting' ) ) {
-		wp_enqueue_script(
-			'calendly-widget',
-			'https://assets.calendly.com/assets/external/widget.js',
-			array(),
-			null,
-			true
-		);
-	}
 }
 add_action( 'wp_enqueue_scripts', 'verus_enqueue_assets' );
 
