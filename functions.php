@@ -22,4 +22,5 @@ require VERUS_DIR . '/inc/acf.php';
 require VERUS_DIR . '/inc/render.php';
 require VERUS_DIR . '/inc/seo.php';
 require VERUS_DIR . '/inc/landing-calendly.php';
+require VERUS_DIR . '/inc/informative-videos.php';
 require VERUS_DIR . '/inc/page-setup.php';
