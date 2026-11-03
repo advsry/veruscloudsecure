@@ -24,6 +24,11 @@
 			<?php endif; ?>
 		</div>
 
+		<?php if ( function_exists( 'verus_current_calendly_test' ) && verus_current_calendly_test() ) : ?>
+		<div class="v-header__cta">
+			<a class="v-header__phone" href="tel:<?php echo esc_attr( verus_tel( verus_opt( 'phone', '1-800-958-3787' ) ) ); ?>"><?php echo esc_html( verus_opt( 'phone', '1-800-958-3787' ) ); ?></a>
+		</div>
+		<?php else : ?>
 		<nav class="v-nav" id="primary-nav" aria-label="<?php esc_attr_e( 'Primary', 'verus' ); ?>">
 			<?php verus_the_primary_nav(); ?>
 		</nav>
@@ -36,8 +41,11 @@
 				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'verus' ); ?></span>
 			</button>
 		</div>
+		<?php endif; ?>
 	</div>
+	<?php if ( ! function_exists( 'verus_current_calendly_test' ) || ! verus_current_calendly_test() ) : ?>
 	<div class="v-mega-backdrop" hidden></div>
+	<?php endif; ?>
 </header>
 
 <main id="main-content" class="v-main">

@@ -10,6 +10,18 @@ defined( 'ABSPATH' ) || exit;
 </main>
 
 <footer class="v-footer">
+	<?php if ( function_exists( 'verus_current_calendly_test' ) && verus_current_calendly_test() ) : ?>
+	<div class="v-shell v-footer__grid">
+		<div class="v-footer__brand">
+			<a class="v-logo v-logo--foot" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<img src="<?php echo esc_url( VERUS_URI . '/assets/images/logo-white.png' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" width="150" height="62">
+			</a>
+			<p class="v-footer__meta">
+				<a href="tel:<?php echo esc_attr( verus_tel( verus_opt( 'phone', '1-800-958-3787' ) ) ); ?>"><?php echo esc_html( verus_opt( 'phone', '1-800-958-3787' ) ); ?></a>
+			</p>
+		</div>
+	</div>
+	<?php else : ?>
 	<div class="v-shell v-footer__grid">
 		<div class="v-footer__brand">
 			<a class="v-logo v-logo--foot" href="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -83,6 +95,7 @@ defined( 'ABSPATH' ) || exit;
 			</nav>
 		</div>
 	</div>
+	<?php endif; ?>
 </footer>
 
 <?php wp_footer(); ?>
